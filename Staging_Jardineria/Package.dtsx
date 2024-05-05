@@ -11,8 +11,8 @@
   DTS:LocaleID="9226"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{C4BA66BF-DA40-48FD-8442-AAA1540515A0}">
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{E09831B8-1070-409A-BA81-9E9D8B95FF45}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1633,7 +1633,7 @@ order by ID_cliente;</property>
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select id_pedido, ID_producto, cantidad, precio_unidad
 from  detalle_pedido
-order by ID_pedido</property>
+order by ID_pedido, numero_linea</property>
                 <property
                   dataType="System.Int32"
                   description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
@@ -2832,13 +2832,13 @@ from pedido</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="180,42"
-          Id="Package\Tarea Flujo de datos"
-          TopLeft="229,206" />
-        <NodeLayout
           Size="176,47"
           Id="Package\LIMPIAR TABLAS"
           TopLeft="225,66" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Tarea Flujo de datos"
+          TopLeft="229,206" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
           TopLeft="316,113">
@@ -2870,27 +2870,91 @@ from pedido</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="168,42"
-          Id="Package\Tarea Flujo de datos\Origen_Empleado"
-          TopLeft="72,25" />
+          Size="152,42"
+          Id="Package\Tarea Flujo de datos\Dest_Tb_Pago"
+          TopLeft="789,34" />
         <NodeLayout
           Size="176,42"
           Id="Package\Tarea Flujo de datos\Dest_Tb_Empleado"
           TopLeft="312,27" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Tarea Flujo de datos\Origen_Tiempo"
+          TopLeft="74,313" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Tarea Flujo de datos\Dest_Tb_Tiempo"
+          TopLeft="316,317" />
+        <NodeLayout
+          Size="153,42"
+          Id="Package\Tarea Flujo de datos\Origen_Cliente"
+          TopLeft="68,420" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Tarea Flujo de datos\Dest_Tb_Cliente"
+          TopLeft="310,424" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Tarea Flujo de datos\Dest_Tb_Pedido"
+          TopLeft="314,202" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\Tarea Flujo de datos\Origen_DetallePedido"
+          TopLeft="549,109" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Tarea Flujo de datos\Dest_Tb_Oficina"
+          TopLeft="315,113" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\Tarea Flujo de datos\Origen_Pedido"
+          TopLeft="68,202" />
+        <NodeLayout
+          Size="195,42"
+          Id="Package\Tarea Flujo de datos\Dest_Tb_DetallePedido"
+          TopLeft="808,102" />
+        <NodeLayout
+          Size="144,42"
+          Id="Package\Tarea Flujo de datos\Origen_Pago"
+          TopLeft="547,30" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Tarea Flujo de datos\Origen_Empleado"
+          TopLeft="72,25" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Tarea Flujo de datos\Dest_Tb_Producto"
+          TopLeft="801,215" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Tarea Flujo de datos\Origen_CatProducto"
+          TopLeft="557,316" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Tarea Flujo de datos\Dest_catProdcuto"
+          TopLeft="810,315" />
+        <NodeLayout
+          Size="162,42"
+          Id="Package\Tarea Flujo de datos\Origen_Producto"
+          TopLeft="549,211" />
+        <NodeLayout
+          Size="153,42"
+          Id="Package\Tarea Flujo de datos\Origen_Oficina"
+          TopLeft="73,109" />
         <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Salida de origen de ADO NET]"
-          TopLeft="240,47">
+          Id="Package\Tarea Flujo de datos.Paths[Salida de origen de ADO NET8]"
+          TopLeft="736,336.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="72,0"
+              EndConnector="74,0"
               Start="0,0"
-              End="64.5,0">
+              End="66.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="64.5,0" />
+                    End="66.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2899,41 +2963,9 @@ from pedido</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="153,42"
-          Id="Package\Tarea Flujo de datos\Origen_Oficina"
-          TopLeft="73,109" />
-        <NodeLayout
-          Size="152,42"
-          Id="Package\Tarea Flujo de datos\Origen_Pedido"
-          TopLeft="68,202" />
-        <NodeLayout
-          Size="187,42"
-          Id="Package\Tarea Flujo de datos\Origen_DetallePedido"
-          TopLeft="549,109" />
-        <NodeLayout
-          Size="162,42"
-          Id="Package\Tarea Flujo de datos\Origen_Producto"
-          TopLeft="549,211" />
-        <NodeLayout
-          Size="161,42"
-          Id="Package\Tarea Flujo de datos\Dest_Tb_Oficina"
-          TopLeft="315,113" />
-        <NodeLayout
-          Size="161,42"
-          Id="Package\Tarea Flujo de datos\Dest_Tb_Pedido"
-          TopLeft="314,202" />
-        <NodeLayout
-          Size="195,42"
-          Id="Package\Tarea Flujo de datos\Dest_Tb_DetallePedido"
-          TopLeft="808,102" />
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Tarea Flujo de datos\Dest_Tb_Producto"
-          TopLeft="801,215" />
         <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Salida de origen de ADO NET1]"
-          TopLeft="226,132">
+          Id="Package\Tarea Flujo de datos.Paths[Salida de origen de ADO NET7]"
+          TopLeft="221,443">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2954,19 +2986,63 @@ from pedido</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Salida de origen de ADO NET2]"
-          TopLeft="220,223">
+          Id="Package\Tarea Flujo de datos.Paths[Salida de origen de ADO NET6]"
+          TopLeft="229,336">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="94,0"
+              EndConnector="87,0"
               Start="0,0"
-              End="86.5,0">
+              End="79.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="86.5,0" />
+                    End="79.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[Salida de origen de ADO NET5]"
+          TopLeft="691,53">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="98,0"
+              Start="0,0"
+              End="90.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="90.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[Salida de origen de ADO NET4]"
+          TopLeft="711,234">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="90,0"
+              Start="0,0"
+              End="82.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="82.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2998,19 +3074,19 @@ from pedido</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Salida de origen de ADO NET4]"
-          TopLeft="711,234">
+          Id="Package\Tarea Flujo de datos.Paths[Salida de origen de ADO NET2]"
+          TopLeft="220,223">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="90,0"
+              EndConnector="94,0"
               Start="0,0"
-              End="82.5,0">
+              End="86.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="82.5,0" />
+                    End="86.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3019,77 +3095,9 @@ from pedido</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="144,42"
-          Id="Package\Tarea Flujo de datos\Origen_Pago"
-          TopLeft="547,30" />
-        <NodeLayout
-          Size="152,42"
-          Id="Package\Tarea Flujo de datos\Dest_Tb_Pago"
-          TopLeft="789,34" />
         <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Salida de origen de ADO NET5]"
-          TopLeft="691,53">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="98,0"
-              Start="0,0"
-              End="90.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="90.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Tarea Flujo de datos\Dest_Tb_Tiempo"
-          TopLeft="316,317" />
-        <NodeLayout
-          Size="155,42"
-          Id="Package\Tarea Flujo de datos\Origen_Tiempo"
-          TopLeft="74,313" />
-        <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Salida de origen de ADO NET6]"
-          TopLeft="229,336">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="87,0"
-              Start="0,0"
-              End="79.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="79.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="161,42"
-          Id="Package\Tarea Flujo de datos\Dest_Tb_Cliente"
-          TopLeft="310,424" />
-        <NodeLayout
-          Size="153,42"
-          Id="Package\Tarea Flujo de datos\Origen_Cliente"
-          TopLeft="68,420" />
-        <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Salida de origen de ADO NET7]"
-          TopLeft="221,443">
+          Id="Package\Tarea Flujo de datos.Paths[Salida de origen de ADO NET1]"
+          TopLeft="226,132">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3109,28 +3117,20 @@ from pedido</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="179,42"
-          Id="Package\Tarea Flujo de datos\Origen_CatProducto"
-          TopLeft="557,316" />
-        <NodeLayout
-          Size="166,42"
-          Id="Package\Tarea Flujo de datos\Dest_catProdcuto"
-          TopLeft="810,315" />
         <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Salida de origen de ADO NET8]"
-          TopLeft="736,336.5">
+          Id="Package\Tarea Flujo de datos.Paths[Salida de origen de ADO NET]"
+          TopLeft="240,47">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="74,0"
+              EndConnector="72,0"
               Start="0,0"
-              End="66.5,0">
+              End="64.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="66.5,0" />
+                    End="64.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3143,7 +3143,7 @@ from pedido</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Tarea Flujo de datos\Origen_Empleado">
+    design-time-name="Package\Tarea Flujo de datos\Dest_Tb_Pago">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -3159,79 +3159,7 @@ from pedido</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Tarea Flujo de datos\Origen_Oficina">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Tarea Flujo de datos\Origen_Pedido">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Tarea Flujo de datos\Origen_DetallePedido">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Tarea Flujo de datos\Origen_Producto">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Tarea Flujo de datos\Dest_Tb_Oficina">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Tarea Flujo de datos\Dest_Tb_Pedido">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Tarea Flujo de datos\Dest_Tb_DetallePedido">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Tarea Flujo de datos\Dest_Tb_Producto">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Tarea Flujo de datos\Origen_Pago">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Tarea Flujo de datos\Dest_Tb_Pago">
+    design-time-name="Package\Tarea Flujo de datos\Origen_Tiempo">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -3247,7 +3175,7 @@ from pedido</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Tarea Flujo de datos\Origen_Tiempo">
+    design-time-name="Package\Tarea Flujo de datos\Origen_Cliente">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -3263,7 +3191,63 @@ from pedido</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Tarea Flujo de datos\Origen_Cliente">
+    design-time-name="Package\Tarea Flujo de datos\Dest_Tb_Pedido">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tarea Flujo de datos\Origen_DetallePedido">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tarea Flujo de datos\Dest_Tb_Oficina">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tarea Flujo de datos\Origen_Pedido">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tarea Flujo de datos\Dest_Tb_DetallePedido">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tarea Flujo de datos\Origen_Pago">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tarea Flujo de datos\Origen_Empleado">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tarea Flujo de datos\Dest_Tb_Producto">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -3280,6 +3264,22 @@ from pedido</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Tarea Flujo de datos\Dest_catProdcuto">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tarea Flujo de datos\Origen_Producto">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tarea Flujo de datos\Origen_Oficina">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
